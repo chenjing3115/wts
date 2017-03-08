@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "Content/basic-color.css",
+    "inputFile": "Content/basic-color.scss"
+  },
+  {
+    "outputFile": "Content/bootswatch.css",
+    "inputFile": "Content/bootswatch.less"
+  },
+  {
+    "outputFile": "Content/variables.css",
+    "inputFile": "Content/variables.less"
+  },
+  {
+    "outputFile": "Content/layout.css",
+    "inputFile": "Content/layout.scss"
+  }
+]

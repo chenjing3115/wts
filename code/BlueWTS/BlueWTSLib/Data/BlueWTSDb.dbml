@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BlueWTS" Class="BlueWTSDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=S2\SQLSERVER2008R2;Initial Catalog=BlueWTS;Persist Security Info=True;User ID=sa" SettingsObjectName="BlueWTSLib.Properties.Settings" SettingsPropertyName="BlueWTSConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[User]" Member="User">
+    <Type Name="User">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nr" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="pwd" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="pwdSalt" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="wxOpenId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="wx_access_token" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="wx_access_token_expires_in" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="wx_refresh_token" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="wx_scope" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="roleType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysRoleTypeAuthorization" Member="SysRoleTypeAuthorization">
+    <Type Name="SysRoleTypeAuthorization">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="roleType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sysAuthorizationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="SysAuthorization_SysRoleTypeAuthorization" Member="SysAuthorization" ThisKey="sysAuthorizationId" OtherKey="id" Type="SysAuthorization" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SysAuthorization" Member="SysAuthorization">
+    <Type Name="SysAuthorization">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="controller" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="action" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="parentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="SysAuthorization_SysRoleTypeAuthorization" Member="SysRoleTypeAuthorization" ThisKey="id" OtherKey="sysAuthorizationId" Type="SysRoleTypeAuthorization" />
+    </Type>
+  </Table>
+</Database>
